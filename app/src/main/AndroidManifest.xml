@@ -15,13 +15,17 @@
         android:theme="@style/Theme.Pokedex"
         tools:targetApi="33">
         <activity
-            android:name=".MainActivityList"
+            android:name=".LoadingActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
+        </activity>
+        <activity
+            android:name=".MainActivityList"
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
