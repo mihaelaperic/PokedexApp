@@ -12,8 +12,9 @@
         android:layout_height="match_parent"
         android:clickable="true"
         android:clipToPadding="false"
-        android:padding="16dp"
-        android:scrollbars="vertical" />
+        android:padding="14dp"
+        android:scrollbars="vertical"
+        android:focusable="true" />
 
 
 </RelativeLayout>
