@@ -21,6 +21,7 @@ import java.util.*
 class MainActivityList : AppCompatActivity(), PokemonAdapter.OnItemClickListener {
 
     private val pokeList: MutableList<String> = mutableListOf()
+    private val imageList: MutableList<String> = mutableListOf()
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +32,10 @@ class MainActivityList : AppCompatActivity(), PokemonAdapter.OnItemClickListener
             for (i in 1..50) {
                 try {
                     val pokemonData = getPokemonData(i)
+                    val pokemonImage = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/$i.png"
                     pokeList.add(pokemonData)
+                    imageList.add(pokemonImage)
+
                 } catch (e: Exception) {
                     throw IOException("Error adding data", e)
                 }
@@ -40,7 +44,7 @@ class MainActivityList : AppCompatActivity(), PokemonAdapter.OnItemClickListener
             launch(Dispatchers.Main) {
                 val rvList: RecyclerView = findViewById(R.id.pokemonRecyclerView)
                 rvList.layoutManager = LinearLayoutManager(this@MainActivityList)
-                val pokeAdapter = PokemonAdapter(pokeList, this@MainActivityList)
+                val pokeAdapter = PokemonAdapter(pokeList, imageList, this@MainActivityList)
                 rvList.adapter = pokeAdapter
             }
         }
@@ -79,4 +83,6 @@ class MainActivityList : AppCompatActivity(), PokemonAdapter.OnItemClickListener
         }
     }
 
-}
+    }
+
+
